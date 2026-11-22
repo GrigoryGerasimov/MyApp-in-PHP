@@ -1,0 +1,11 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"MyApp\\App\\" : "src"
+		}
+	},
+	"name" : "myapp/app",
+	"require" : {
+		"php" : ">=8.2"
+	}
+}
