@@ -11,9 +11,11 @@
 <header>
 <?php 
 
-include __DIR__.'/elements/header.tpl.php';
+include_once __DIR__.'/../../../../vendor/autoload.php';
 
-include_once __DIR__.'/../../utils/log.php';
+include_once __DIR__.'/elements/header.tpl.php';
+
+include_once __DIR__.'/../../utils/logg.php';
 
 ?>
 </header>

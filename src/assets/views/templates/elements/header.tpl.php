@@ -1,5 +1,17 @@
 <?php 
 
+use MyApp\App\assets\exceptions\UnauthorizedAccessException;
+
+try {
+    
+    defined('MY_APP') || throw new UnauthorizedAccessException('Sorry, but access forbidden', 403);
+    
+} catch (UnauthorizedAccessException $err) {
+    
+    $err->forbidAccess();
+    
+}
+
 if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
 ?>

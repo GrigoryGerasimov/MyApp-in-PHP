@@ -1,5 +1,11 @@
+<?php 
+
+require_once 'assets/utils/logg.php';
+
+?>
+
 <div class="max-w-sm w-full lg:max-w-full lg:flex">
-  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url(<?=$post['url']?>)" title="Woman holding a mug">
+  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url(<?php echo $post['url']?>); background-repeat: no repeat; background-size: contain; background-position: center center">
   </div>
   <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
     <div class="mb-8">
@@ -9,14 +15,14 @@
         </svg>
         Members only
       </p>
-      <div class="text-gray-900 font-bold text-xl mb-2"><a href=<?=$post['id'].'.php'?>><?=ucfirst($post['title'])?></a></div>
-      <p class="text-gray-700 text-base"><?=ucfirst($post['text'])?></p>
+      <div class="text-gray-900 font-bold text-xl mb-2"><a href=<?php echo $post['slug'].'.php'?>><?php echo ucfirst($post['title'])?></a></div>
+      <p class="text-gray-700 text-base"><?php echo ucfirst($post['text'])?></p>
     </div>
     <div class="flex items-center">
-      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg" alt="Avatar of Jonathan Reinink">
+      <img class="w-10 h-10 rounded-full mr-4" src="<?php echo $post['avatar']?>" alt="Avatar <?php echo $post['id']?>">
       <div class="text-sm">
-        <p class="text-gray-900 leading-none"><?=ucfirst($post['author'])?></p>
-        <p class="text-gray-600"><?=$post['date']?></p>
+        <p class="text-gray-900 leading-none"><?php echo ucfirst($post['author'])?></p>
+        <p class="text-gray-600"><?php echo $post['date']?></p>
       </div>
     </div>
   </div>
