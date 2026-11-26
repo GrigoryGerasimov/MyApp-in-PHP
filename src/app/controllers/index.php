@@ -107,40 +107,41 @@ $posts = array(
     ]
 );
 
-
 $navHeader = array(
     [
         "title" => "Acerca de nosotros",
-        "href" => "about.php"
+        "path" => "about"
     ],
     [
         "title" => "Contenido",
-        "href" => ""
+        "path" => ""
     ],
     [
         "title" => "Blog",
-        "href" => ""
+        "path" => ""
     ]
 );
 
 $navFooter = array(
     [
         "title" => "Derechos de uso",
-        "href" => ""
+        "path" => ""
     ],
     [
         "title" => "Mapa del portal",
-        "href" => ""
+        "path" => ""
     ],
     [
         "title" => "Contactos",
-        "href" => ""
+        "path" => ""
     ]
 );
 
 $_SESSION['posts'] = $posts;
 $_SESSION['navHeader'] = $navHeader;
 $_SESSION['navFooter'] = $navFooter;
+
+$pageTitle = 'My App - Main';
 
 
 require_once VIEWS.'/templates/index.tpl.php';
