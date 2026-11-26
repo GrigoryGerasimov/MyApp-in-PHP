@@ -16,7 +16,7 @@ include __DIR__."/elements/header.tpl.php";
 ?>
 </header>
 
-<main class="grid grid-cols-3 gap-3 bg-gray-200 p-6">
+<main class="grid grid-cols-5 gap-5 bg-gray-200 p-6">
 
 <?php 
 

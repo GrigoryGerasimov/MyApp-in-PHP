@@ -1,5 +1,21 @@
 <?php 
 
+
+use MyApp\App\assets\exceptions\UnauthorizedAccessException;
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+
+try {
+    
+    defined('MY_APP') || throw new UnauthorizedAccessException('Sorry, but access forbidden', 403);
+    
+} catch (UnauthorizedAccessException $err) {
+    
+    $err->forbidAccess();
+    
+}
+
 $about = array(
     [
         "type" => "about us",

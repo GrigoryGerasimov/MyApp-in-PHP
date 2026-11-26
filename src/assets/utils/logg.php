@@ -1,35 +1,27 @@
 <?php
 
+
+use MyApp\App\assets\exceptions\ProcessTerminateException;
+
+
 function logg(mixed $data, bool $exit = false): void
 {
-    if (!$exit) {
+    echo '<pre>';
+    echo var_dump($data);
+    echo '</pre>';
     
-        ?>
+    if ($exit) {
         
-        <pre><?=var_dump($data)?></pre>
-        
-        <?php 
-    
-    } else {
-    
-        ?>
-        
-        <pre>
-        
-        <?php 
-        
-        var_dump($data);
-        
-        exit();
-        
-        ?>
-        
-        </pre>
-        
-        <?php
-    
+        try {
+            
+            throw new ProcessTerminateException('Terminating process for testing purpose', 500);
+            
+        } catch (ProcessTerminateException $err) {
+            
+            exit($err->getMessage());
+            
+        }
     }
-
-};
+}
 
 ?>
