@@ -11,7 +11,7 @@ function guard(string $constName)
         
     } catch (UnauthorizedAccessException $err) {
         
-        $err->forbidAccess();
+        $err->informUser();
         
     }
 }

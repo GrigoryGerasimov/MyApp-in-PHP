@@ -12,7 +12,7 @@ include VIEWS.'/templates/elements/title.tpl.php';
 ?>
 
 <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'></script>
-<link rel='stylesheet' href='assets/css/index.css'/>
+<link rel='stylesheet' href='/assets/css/index.css'/>
 </head>
 <body class="grid h-screen grid-rows-[auto_1fr_auto]">
 <header>

@@ -3,10 +3,7 @@
 namespace MyApp\App\core\exceptions;
 
 
-class ProcessTerminateException extends \Exception
+class ProcessTerminateException extends CustomException
 {
-    public function __construct(string $message, int $code)
-    {
-        parent::__construct($message, $code);
-    }
+    
 }
