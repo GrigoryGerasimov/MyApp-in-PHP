@@ -1,1 +1,1 @@
-MyApp in PHP + MySQL + Tailwind
+MyApp in PHP + PostgreSQL + Tailwind
