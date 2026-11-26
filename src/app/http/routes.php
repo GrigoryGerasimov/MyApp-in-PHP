@@ -1,5 +1,9 @@
 <?php
 
+use MyApp\App\core\exceptions\PageNotFoundException;
+use MyApp\App\core\exceptions\GenericClientException;
+
+
 function getRoutePath(string $uri): mixed
 {
     try {
@@ -10,16 +14,15 @@ function getRoutePath(string $uri): mixed
         
     } catch (\UnhandledMatchError $err) {
         
-        http_response_code(404);
+        $error = new PageNotFoundException('Page not found', 404);
         
-        exit('Page not found');
+        $error->informUser();
         
-    } catch (\Throwable $error) {
+    } catch (\Throwable $err) {
         
-        http_response_code(400);
+        $error = new GenericClientException($err->getMessage());
         
-        exit($error->getMessage());
-        
+        $error->informUser();
     }
 }
 
@@ -27,7 +30,8 @@ function getRoutesList(string $uri): string
 {
     return match($uri) {
         '' => '/index.php',
-        'about' => '/about.php'
+        'about' => '/about.php',
+        default => '/404.php'
     };
 }
 

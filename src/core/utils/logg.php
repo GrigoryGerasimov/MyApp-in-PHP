@@ -18,7 +18,7 @@ function logg(mixed $data, bool $exit = false): void
             
         } catch (ProcessTerminateException $err) {
             
-            exit($err->getMessage());
+            $err->informUser();
             
         }
     }

@@ -11,5 +11,3 @@ $pageTitle = 'My App - About us';
 
 
 require_once VIEWS.'/templates/about.tpl.php';
-
-?>

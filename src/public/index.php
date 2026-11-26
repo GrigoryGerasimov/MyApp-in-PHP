@@ -18,7 +18,7 @@ require_once HTTP.'/routes.php';
 include_once CORE.'/utils/logg.php';
 
 
-$requestUri = trim($_SERVER['REQUEST_URI'], '/');
+$requestUri = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/');
 
 $path = getRoutePath($requestUri);
 
