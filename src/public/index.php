@@ -13,6 +13,13 @@ require_once __DIR__.'/../env_const.php';
 
 require_once ROOT.'/../vendor/autoload.php';
 
-require_once CONTROLLERS.'/index.php';
+require_once HTTP.'/routes.php';
 
 include_once CORE.'/utils/logg.php';
+
+
+$requestUri = trim($_SERVER['REQUEST_URI'], '/');
+
+$path = getRoutePath($requestUri);
+
+require_once CONTROLLERS.$path;

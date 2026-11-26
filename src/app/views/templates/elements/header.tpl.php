@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between flex-wrap bg-gray-600 p-6">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
-    <span class="font-semibold text-xl tracking-tight"><a href="index.php">MyApp</a></span>
+    <span class="font-semibold text-xl tracking-tight"><a href="<?php echo '/' ?>">MyApp</a></span>
   </div>
   <div class="block lg:hidden">
     <button class="flex items-center px-3 py-2 border rounded text-white border-white">
