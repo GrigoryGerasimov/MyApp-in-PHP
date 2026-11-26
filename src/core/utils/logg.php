@@ -1,7 +1,7 @@
 <?php
 
 
-use MyApp\App\assets\exceptions\ProcessTerminateException;
+use MyApp\App\core\exceptions\ProcessTerminateException;
 
 
 function logg(mixed $data, bool $exit = false): void

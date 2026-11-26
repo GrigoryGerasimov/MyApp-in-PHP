@@ -11,11 +11,7 @@
 <header>
 <?php 
 
-include_once __DIR__.'/../../../../vendor/autoload.php';
-
-include_once __DIR__.'/elements/header.tpl.php';
-
-include_once __DIR__.'/../../utils/logg.php';
+include_once VIEWS.'/templates/elements/header.tpl.php';
 
 ?>
 </header>
@@ -28,7 +24,7 @@ foreach($about as $aboutItem){
     
     $textItem = $aboutItem;
     
-    include __DIR__.'/elements/text.tpl.php';
+    include VIEWS.'/templates/elements/text.tpl.php';
     
 }
 
@@ -40,7 +36,7 @@ foreach($about as $aboutItem){
 
 <?php 
 
-include __DIR__."/elements/footer.tpl.php";
+include VIEWS."/templates/elements/footer.tpl.php";
 
 ?>
 
