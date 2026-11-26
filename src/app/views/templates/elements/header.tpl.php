@@ -1,21 +1,3 @@
-<?php 
-
-use MyApp\App\assets\exceptions\UnauthorizedAccessException;
-
-try {
-    
-    defined('MY_APP') || throw new UnauthorizedAccessException('Sorry, but access forbidden', 403);
-    
-} catch (UnauthorizedAccessException $err) {
-    
-    $err->forbidAccess();
-    
-}
-
-if (session_status() !== PHP_SESSION_ACTIVE) session_start();
-
-?>
-
 <nav class="flex items-center justify-between flex-wrap bg-gray-600 p-6">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
     <span class="font-semibold text-xl tracking-tight"><a href="index.php">MyApp</a></span>
@@ -36,7 +18,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
             
             $navItem = $navHeaderItem;
         
-        include __DIR__.'/navItem.tpl.php';
+        include 'navItem.tpl.php';
         
     }
         

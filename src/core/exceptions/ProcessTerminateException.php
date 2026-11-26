@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\App\assets\exceptions;
+namespace MyApp\App\core\exceptions;
 
 
 class ProcessTerminateException extends \Exception

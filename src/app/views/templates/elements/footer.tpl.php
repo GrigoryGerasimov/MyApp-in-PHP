@@ -1,9 +1,3 @@
-<?php 
-
-if (session_status() !== PHP_SESSION_ACTIVE) session_start();
-
-?>
-
 <nav class="flex items-center justify-between flex-wrap bg-gray-600 p-6">
 <div class="flex items-center flex-shrink-0 text-white mr-6">
 <span class="font-semibold text-sm tracking-tight">(c) Copyright <?php echo date('Y') ?></span>
@@ -19,7 +13,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
               
               $navItem = $navFooterItem;
           
-          include __DIR__.'/navItem.tpl.php';
+          include 'navItem.tpl.php';
           
       }
           

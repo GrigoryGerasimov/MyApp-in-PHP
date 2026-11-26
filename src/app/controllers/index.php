@@ -1,18 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
-if (session_status() === PHP_SESSION_NONE) session_start();
-
-error_reporting(-1);
-
-require_once __DIR__.'/../vendor/autoload.php';
-
-require_once __DIR__.'/assets/utils/logg.php';
-
-
-define('MY_APP', true);
-
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
 $posts = array(
     [
@@ -152,4 +142,5 @@ $_SESSION['posts'] = $posts;
 $_SESSION['navHeader'] = $navHeader;
 $_SESSION['navFooter'] = $navFooter;
 
-require_once __DIR__.'/assets/views/templates/index.tpl.php';
+
+require_once VIEWS.'/templates/index.tpl.php';
