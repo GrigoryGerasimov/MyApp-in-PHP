@@ -3,7 +3,7 @@
 namespace MyApp\App\core\exceptions;
 
 
-class PageNotFoundException extends CustomException
+class PageNotFoundException extends AbstractCustomException
 {
 
 }

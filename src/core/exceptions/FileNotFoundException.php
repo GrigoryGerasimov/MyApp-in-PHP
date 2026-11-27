@@ -3,7 +3,7 @@
 namespace MyApp\App\core\exceptions;
 
 
-class FileNotFoundException extends CustomException
+class FileNotFoundException extends AbstractCustomException
 {
     
 }

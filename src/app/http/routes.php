@@ -14,15 +14,12 @@ function getRoutePath(string $uri): mixed
         
     } catch (\UnhandledMatchError $err) {
         
-        $error = new PageNotFoundException('Page not found', 404);
-        
-        $error->informUser();
+        throw new PageNotFoundException('Page not found', 404);
         
     } catch (\Throwable $err) {
         
-        $error = new GenericClientException($err->getMessage());
+        throw new GenericClientException($err->getMessage(), 400);
         
-        $error->informUser();
     }
 }
 

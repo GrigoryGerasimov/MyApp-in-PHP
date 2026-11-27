@@ -12,6 +12,8 @@ if (session_status() === PHP_SESSION_NONE) {
 use MyApp\App\app\db\PdoDsnBuilder;
 use MyApp\App\app\db\DbConnector;
 use \MyApp\App\core\exceptions\GenericServerException;
+use MyApp\App\core\exceptions\PageNotFoundException;
+use MyApp\App\core\exceptions\GenericClientException;
 
 require_once __DIR__.'/../config/config.php';
 require_once ROOT.'/../vendor/autoload.php';
@@ -35,28 +37,27 @@ try {
     
     $connection = DbConnector::init($dsn, $dbConfig['username'], $dbConfig['password'], $dbConfig['options'])::getConnection();
     
-} catch (GenericServerException $err) {
     
-    require CONTROLLERS.'/500.php';
+    $requestUri = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/');
+    
+    $path = getRoutePath($requestUri);
+    
+    if (file_exists(CONTROLLERS.$path)) {
+        
+        require_once CONTROLLERS.$path;
+    
+    } else {
+        
+        http_response_code(307);
+        
+        header('Location: /');
+    
+    }
+
+} catch (GenericServerException|GenericClientException|PageNotFoundException $err) {
+    
+    require CONTROLLERS."/{$err->getCode()}.php";
     
     $err->informUser();
-    
-}
 
-
-$requestUri = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/');
-
-$path = getRoutePath($requestUri);
-
-
-if (file_exists(CONTROLLERS.$path)) {
-    
-    require_once CONTROLLERS.$path;
-    
-} else {
-    
-    http_response_code(307);
-    
-    header('Location: /');
-    
 }

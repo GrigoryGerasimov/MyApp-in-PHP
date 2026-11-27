@@ -3,7 +3,7 @@
 namespace MyApp\App\core\exceptions;
 
 
-class UnauthorizedAccessException extends CustomException
+class UnauthorizedAccessException extends AbstractCustomException
 {
 
 }
