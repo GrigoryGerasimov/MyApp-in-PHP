@@ -1,3 +1,9 @@
+<?php 
+
+$pageTitle = '505 - Internal Server Error';
+
+?>
+
 <!DOCTYPE html>
 <html lang='es'>
 

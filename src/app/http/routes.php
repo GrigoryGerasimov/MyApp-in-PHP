@@ -4,12 +4,11 @@ use MyApp\App\core\exceptions\PageNotFoundException;
 use MyApp\App\core\exceptions\GenericClientException;
 
 
-function getRoutePath(string $uri, ?string $uriId = null): mixed
+function getRoute(object $controller, string $uri, ?string $uriId = null)
 {
     try {
-        $routePath = getRoutesList($uri, $uriId);
-
-        return $routePath;
+        
+        getRoutesList($controller, $uri, $uriId);
         
     } catch (\UnhandledMatchError $err) {
         
@@ -22,17 +21,16 @@ function getRoutePath(string $uri, ?string $uriId = null): mixed
     }
 }
 
-function getRoutesList(string $uri, ?string $uriId = null): string
-{
-    return match($uri) {
+function getRoutesList(object $controller, string $uri, ?string $uriId = null): void
+{    
+    match($uri) {
         
-        '' => '/index.php',
+        '' => $controller->readAll(),
         
-        'about' => '/about.php',
+        'about' => require_once VIEWS.'/templates/about.tpl.php',
         
-        "post/$uriId" => "/post.php",
+        "post/$uriId" => $controller->readById($uriId)
         
-        default => '/404.php'
     };
 }
 

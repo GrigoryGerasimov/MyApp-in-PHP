@@ -11,5 +11,5 @@ abstract class AbstractController implements ControllerInterface
     abstract public function readById(string $id);
     abstract public function edit(string $id, array $data);
     abstract public function update(string $id, array $data);
-    abstract public function delete(string $id);
+    abstract public function destroy(string $id);
 }
