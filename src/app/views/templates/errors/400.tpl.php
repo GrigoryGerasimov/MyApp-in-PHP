@@ -1,3 +1,9 @@
+<?php 
+
+$pageTitle = '400 - Bad Request';
+
+?>
+
 <!DOCTYPE html>
 <html lang='es'>
 

@@ -14,13 +14,15 @@ use MyApp\App\app\db\DbConnector;
 use \MyApp\App\core\exceptions\GenericServerException;
 use MyApp\App\core\exceptions\PageNotFoundException;
 use MyApp\App\core\exceptions\GenericClientException;
+use MyApp\App\app\controllers\PostController;
+use MyApp\App\app\controllers\ErrorController;
 
 require_once __DIR__.'/../config/config.php';
 require_once ROOT.'/../vendor/autoload.php';
 require_once HTTP.'/routes.php';
-include_once CORE.'/utils/logg.php';
-include_once CORE.'/utils/str_normalize.php';
-include_once CONFIG.'/db-config.php';
+require_once CONFIG.'/db-config.php';
+require_once CORE.'/utils/logg.php';
+require_once CORE.'/utils/str_normalize.php';
 
 
 $dsnBuilder = new PdoDsnBuilder();
@@ -37,29 +39,18 @@ try {
     
     $connection = DbConnector::init($dsn, $dbConfig['username'], $dbConfig['password'], $dbConfig['options'])::getConnection();
     
-    
+    $postController = new PostController($connection);
+
     $requestUri = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/');
     
     $postId = preg_match('#^post/(\d+)$#', $requestUri, $matches) ? $matches[1] : null;
     
-    $path = getRoutePath($requestUri, $postId);
-    
-    if (file_exists(CONTROLLERS.$path)) {
-        
-        require_once CONTROLLERS.$path;
-    
-    } else {
-        
-        http_response_code(307);
-        
-        header('Location: /');
-    
-    }
+    getRoute($postController, $requestUri, $postId);
 
 } catch (GenericServerException|GenericClientException|PageNotFoundException $err) {
     
-    require CONTROLLERS."/{$err->getCode()}.php";
+    $errorController = new ErrorController();
     
-    $err->informUser();
+    $errorController->handle($err->getCode());
 
 }

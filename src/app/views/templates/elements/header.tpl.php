@@ -1,3 +1,22 @@
+<?php 
+
+$navHeader = array(
+    [
+        "title" => "Acerca de nosotros",
+        "path" => "/about"
+    ],
+    [
+        "title" => "Contenido",
+        "path" => ""
+    ],
+    [
+        "title" => "Blog",
+        "path" => ""
+    ]
+);
+
+?>
+
 <nav class="flex items-center justify-between flex-wrap bg-gray-600 p-6">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
     <span class="font-semibold text-xl tracking-tight"><a href="<?php echo '/' ?>">MyApp</a></span>
@@ -11,20 +30,16 @@
     <div class="text-sm lg:flex-grow">
     
     <?php 
-
-    if (!empty($_SESSION['navHeader'])) {
+    
+    foreach($navHeader as $navHeaderItem){
         
-        foreach($_SESSION['navHeader'] as $navHeaderItem){
-            
-            $navItem = $navHeaderItem;
+        $navItem = $navHeaderItem;
         
         include 'navItem.tpl.php';
-        
+    
     }
-        
-    }
-      
-      ?>
+    
+    ?>
       
     </div>
   </div>

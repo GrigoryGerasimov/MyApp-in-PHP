@@ -1,3 +1,9 @@
+<?php 
+
+$pageTitle = '404 - Page Not Found';
+
+?>
+
 <!DOCTYPE html>
 <html lang='es'>
 
