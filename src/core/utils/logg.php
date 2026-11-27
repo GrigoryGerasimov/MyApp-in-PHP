@@ -6,15 +6,15 @@ use MyApp\App\core\exceptions\ProcessTerminateException;
 
 function logg(mixed $data, bool $exit = false): void
 {
-    echo '<pre>';
+    echo '<pre style="padding:20px">';
+    
     echo var_dump($data);
-    echo '</pre>';
     
     if ($exit) {
         
         try {
             
-            throw new ProcessTerminateException('Terminating process for testing purpose', 500);
+            throw new ProcessTerminateException('Terminating process for debugging purpose', 500);
             
         } catch (ProcessTerminateException $err) {
             
@@ -22,6 +22,8 @@ function logg(mixed $data, bool $exit = false): void
             
         }
     }
+    
+    echo '</pre>';
 }
 
 ?>

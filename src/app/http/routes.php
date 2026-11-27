@@ -29,9 +29,15 @@ function getRoutePath(string $uri): mixed
 function getRoutesList(string $uri): string
 {
     return match($uri) {
+        
         '' => '/index.php',
+        
         'about' => '/about.php',
+        
+        'post' => '/post.php',
+        
         default => '/404.php'
+            
     };
 }
 

@@ -10,7 +10,7 @@
         Members only
       </p>
       <div class="text-gray-900 font-bold text-xl mb-2"><a href=<?php echo $post['slug'].'.php'?>><?php echo ucfirst($post['title'])?></a></div>
-      <p class="text-gray-700 text-base"><?php echo ucfirst($post['text'])?></p>
+      <p class="text-gray-700 text-base"><?php echo ucfirst($post['content'])?></p>
     </div>
     <div class="flex items-center">
       <img class="w-10 h-10 rounded-full mr-4" src="<?php echo $post['avatar']?>" alt="Avatar <?php echo $post['id']?>">
