@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html lang='es'>
-<head>
-<meta charset='UTF-8'/>
-<meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 
 <?php 
 
-include VIEWS.'/templates/elements/title.tpl.php';
+require VIEWS.'/templates/elements/head.tpl.php';
 
 ?>
 
-<script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'></script>
-<link rel='stylesheet' href='/assets/css/index.css'/>
-</head>
 <body class="grid h-screen grid-rows-[auto_1fr_auto]">
 <header>
 
