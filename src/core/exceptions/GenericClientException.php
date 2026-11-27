@@ -3,7 +3,7 @@
 namespace MyApp\App\core\exceptions;
 
 
-class GenericClientException extends CustomException
+class GenericClientException extends AbstractCustomException
 {
     public function __construct(string $message, int $code = 400)
     {

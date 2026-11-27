@@ -3,7 +3,7 @@
 namespace MyApp\App\core\exceptions;
 
 
-abstract class CustomException extends \Exception implements CustomExceptionInterface
+abstract class AbstractCustomException extends \Exception implements CustomExceptionInterface
 {
     public function __construct(string $message, int $code)
     {

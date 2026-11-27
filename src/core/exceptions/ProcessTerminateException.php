@@ -3,7 +3,7 @@
 namespace MyApp\App\core\exceptions;
 
 
-class ProcessTerminateException extends CustomException
+class ProcessTerminateException extends AbstractCustomException
 {
     
 }
