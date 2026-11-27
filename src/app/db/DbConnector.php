@@ -2,6 +2,8 @@
 
 namespace MyApp\App\app\db;
 
+use MyApp\App\core\exceptions\GenericServerException;
+
 
 class DbConnector
 {
@@ -20,9 +22,9 @@ class DbConnector
             
             }
         
-        } catch (\Throwable $err) {
+        } catch (\PDOException $err) {
             
-            logg($err->getMessage(), true);
+            throw new GenericServerException($err->getMessage(), 500);
             
         }
         

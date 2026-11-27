@@ -11,6 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 use MyApp\App\app\db\PdoDsnBuilder;
 use MyApp\App\app\db\DbConnector;
+use \MyApp\App\core\exceptions\GenericServerException;
 
 require_once __DIR__.'/../config/config.php';
 require_once ROOT.'/../vendor/autoload.php';
@@ -18,6 +19,29 @@ require_once HTTP.'/routes.php';
 include_once CORE.'/utils/logg.php';
 include_once CORE.'/utils/str_normalize.php';
 include_once CONFIG.'/db-config.php';
+
+
+$dsnBuilder = new PdoDsnBuilder();
+
+$dsn = $dsnBuilder
+->setDriver($dbConfig['driver'])
+->setHost($dbConfig['host'])
+->setPort($dbConfig['port'])
+->setDbName($dbConfig['dbname'])
+->setSslMode($dbConfig['sslmode'])
+->buildDsn();
+
+try {
+    
+    $connection = DbConnector::init($dsn, $dbConfig['username'], $dbConfig['password'], $dbConfig['options'])::getConnection();
+    
+} catch (GenericServerException $err) {
+    
+    require CONTROLLERS.'/500.php';
+    
+    $err->informUser();
+    
+}
 
 
 $requestUri = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/');
@@ -36,18 +60,3 @@ if (file_exists(CONTROLLERS.$path)) {
     header('Location: /');
     
 }
-
-$dsnBuilder = new PdoDsnBuilder();
-
-$dsn = $dsnBuilder
-->setDriver($dbConfig['driver'])
-->setHost($dbConfig['host'])
-->setPort($dbConfig['port'])
-->setDbName($dbConfig['dbname'])
-->setSslMode($dbConfig['sslmode'])
-->buildDsn();
-
-$connection = DbConnector::init($dsn, $dbConfig['username'], $dbConfig['password'], $dbConfig['options'])::getConnection();
-
-logg($connection);
-
