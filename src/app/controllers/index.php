@@ -10,7 +10,7 @@ use MyApp\App\app\controllers\PostController;
 $navHeader = array(
     [
         "title" => "Acerca de nosotros",
-        "path" => "about"
+        "path" => "/about"
     ],
     [
         "title" => "Contenido",
@@ -39,10 +39,6 @@ $navFooter = array(
 
 $postController = new PostController($connection);
 $posts = $postController->readAll();
-
-$post = $postController->readById(4);
-
-logg($post);
 
 $_SESSION['posts'] = $posts;
 $_SESSION['navHeader'] = $navHeader;

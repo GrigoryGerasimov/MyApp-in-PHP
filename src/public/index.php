@@ -40,7 +40,9 @@ try {
     
     $requestUri = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/');
     
-    $path = getRoutePath($requestUri);
+    $postId = preg_match('#^post/(\d+)$#', $requestUri, $matches) ? $matches[1] : null;
+    
+    $path = getRoutePath($requestUri, $postId);
     
     if (file_exists(CONTROLLERS.$path)) {
         
