@@ -84,6 +84,8 @@ class PostController extends AbstractController
                     
                 }
                 
+                return $result;
+                
             } else {
                 
                 throw new GenericServerException('Database connection went wrong. Please try again later.');
